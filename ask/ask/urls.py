@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns(
-
+    url('', include('qa.urls')),
     url(r'^$', include('qa.urls')),
     url(r'^login/', include('qa.urls')),
     url(r'^signup/', include('qa.urls')),
