@@ -1,7 +1,0 @@
-"127.0.0.1 - - [05/Mar/2016:18:57:14] "GET /ask/ HTTP/1.0" 200 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
-"127.0.0.1 - - [05/Mar/2016:18:57:17] "GET / HTTP/1.0" 200 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
-"127.0.0.1 - - [05/Mar/2016:19:04:29] "GET / HTTP/1.0" 200 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
-"127.0.0.1 - - [05/Mar/2016:19:04:36] "GET /ask/ HTTP/1.0" 200 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
-"127.0.0.1 - - [05/Mar/2016:19:04:58] "GET /ask/rt HTTP/1.0" 200 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
-"127.0.0.1 - - [05/Mar/2016:19:05:05] "GET /ang HTTP/1.0" 200 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
-"127.0.0.1 - - [05/Mar/2016:19:05:08] "GET /ang/ HTTP/1.0" 404 - "-" "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"
