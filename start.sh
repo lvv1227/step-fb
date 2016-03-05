@@ -1,4 +1,4 @@
-cd /etc/nginx/sites-enabled/
+cd /etc/nginx/sites-enabled/ 
 sudo rm default
 sudo ln -s /home/box/web/etc/nginx.conf test.conf
 sudo chmod +rx /var/log/nginx
