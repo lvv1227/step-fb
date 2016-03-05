@@ -8,4 +8,4 @@ sudo ln -s /home/box/web/etc/nginx.conf test.conf
 
 sudo /etc/init.d/nginx start
 cd /home/box/web/ask/
-gunicorn -c ../etc/gunicorn.conf ask.wsgi
+gunicorn -c ../etc/gunicorn.conf --access-logfile log2.txt --error-logfile log.txt --log-level debug ask.wsgi
