@@ -1,7 +1,7 @@
-cd /etc/nginx/sites-available/
+cd /etc/nginx/sites-enabled/
 sudo rm default
 sudo ln -s /home/box/web/etc/nginx.conf test.conf
-sudo chmod +x /var/log/nginx
+sudo chmod +rx /var/log/nginx
 #sudo pip3 install django
 #sudo apt-get remove gunicorn
 #sudo pip3 install gunicorn
