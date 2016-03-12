@@ -1,7 +1,7 @@
 from django import forms
 from .models import Question,Answer
 
-class AddAskForm(forms.Form):
+class AskForm(forms.Form):
     title = forms.CharField(max_length=100)
     text = forms.CharField(widget=forms.Textarea)
     def clean_message(self):
@@ -12,7 +12,7 @@ class AddAskForm(forms.Form):
         question.save()
         return question
 
-class AddAnswerForm(forms.Form):
+class AnswerForm(forms.Form):
 
     text = forms.CharField()
     question=forms.IntegerField()

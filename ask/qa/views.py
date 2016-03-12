@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpRequest,Http404
 from django.http import HttpResponseRedirect
 
 from .models import Question
-from .forms import AddAskForm,AddAnswerForm
+from .forms import AskForm,AnswerForm
 
 from django.core.paginator import Paginator
 
@@ -58,7 +58,7 @@ def post_list_popular(request):
 def details(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     answers = question.answer_set.all()
-    form = AddAnswerForm()
+    form = AnswerForm()
     return render(request, 'qa/details.html', {'question': question,
                                                'answers':answers,
                                                'question_id':question_id,
@@ -66,14 +66,14 @@ def details(request, question_id):
 
 def question_add(request):
     if request.method == "POST":
-        form = AddAskForm(request.POST)
+        form = AskForm(request.POST)
         if form.is_valid():
             question = form.save()
             url = question.get_url()
             print(url)
             return HttpResponseRedirect(url)
     else:
-        form = AddAskForm()
+        form = AskForm()
     return render(request, 'qa/question_add.html', {
         'form': form,
 
@@ -81,7 +81,7 @@ def question_add(request):
 
 def answer_add(request):
     if request.method == "POST":
-        form = AddAnswerForm(request.POST)
+        form = AnswerForm(request.POST)
         if form.is_valid():
             answer = form.save()
             url = str(answer.question.id)
