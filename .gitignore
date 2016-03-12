@@ -4,4 +4,4 @@ log.txt
 log2.txt
 *.pyc
 *~
-
+/ask/qa/migrations/*
