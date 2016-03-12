@@ -1,0 +1,17 @@
+{% if questions %}
+    <ul>
+    {% for question in questions %}
+        <li><a href="{% url 'qa:details' question.id %}">{{ question.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}
+
+{% for p in paginator.page_range %}
+
+      <li>
+      <a href="{{ paginator.baseurl }}{{ p }}">
+      {{ p }}</a>
+    </li>
+{% endfor %}

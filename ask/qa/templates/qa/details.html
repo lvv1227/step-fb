@@ -1,0 +1,11 @@
+{{ question.title }} <br>
+{{ question.text }} <br>
+{% if answers %}
+
+    {% for answer in answers %}
+       {{ answer.text }}
+       <br>
+    {% endfor %}
+
+
+{% endif %}

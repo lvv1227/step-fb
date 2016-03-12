@@ -10,8 +10,15 @@ sudo apt-get install python3-dev libmysqlclient-dev
 sudo pip3 install mysqlclient 
 
 sudo /etc/init.d/nginx start
-cd ~/web/ask/
 sudo service mysql start
+
+cd ~/web/ask/qa/migrations/
+rm -r *
+
+cd ~/web/ask/
+python3 manage.py makemigrations qa
+python manage.py sqlmigrate qa 0001
+python3 manage.py migrate
 #gunicorn -c ../etc/gunicorn.conf --access-logfile ../log2.txt --error-logfile ../log.txt --log-level debug ask.wsgi
 
 
