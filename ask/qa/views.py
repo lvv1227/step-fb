@@ -25,7 +25,7 @@ def post_list(request):
 
 
 def post_list_all(request):
-    questions = Question.objects.order_by('-added_at')
+    questions = Question.objects.order_by('-id')
     limit = 10
     page = request.GET.get('page', 1)
     paginator = Paginator(questions, limit)

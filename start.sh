@@ -12,6 +12,14 @@ sudo pip3 install mysqlclient
 sudo /etc/init.d/nginx start
 sudo service mysql start
 
+cd /usr/bin/
+sudo rm python
+sudo rm python2
+sudo rm python2.7
+sudo ln -s python3 python
+sudo ln -s python3 python2
+sudo ln -s python3 python2.7
+
 #gunicorn -c ../etc/gunicorn.conf --access-logfile ../log2.txt --error-logfile ../log.txt --log-level debug ask.wsgi
 
 
