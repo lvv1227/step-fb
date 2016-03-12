@@ -11,14 +11,16 @@ class Question(models.Model):
     text=models.TextField(default='')
     added_at=models.DateTimeField(default=timezone.now())
     rating=models.IntegerField(default=0)
-    author=models.ForeignKey(User)
+    author=models.ForeignKey(User,default=1)
     def __str__(self):
         return self.title
+    def get_url(self):
+        return '/question/'+str(self.pk)+'/'
 
 class Answer(models.Model):
     text=models.TextField(default='')
     added_at=models.DateTimeField(default=timezone.now())
     question=models.ForeignKey(Question)
-    author=models.ForeignKey(User)
+    author=models.ForeignKey(User,default=1)
     def __str__(self):
         return self.text

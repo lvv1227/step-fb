@@ -9,3 +9,11 @@
 
 
 {% endif %}
+
+<form action="/answer/" method="post">
+    {% csrf_token %}
+    <textarea cols="40" name="text" rows="10"></textarea>
+    <input type="hidden" name="question" value="{{ question_id }}">
+    <input type="submit" value="Add" />
+</form>
+

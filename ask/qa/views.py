@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse,HttpRequest,Http404
+from django.http import HttpResponseRedirect
 
 from .models import Question
-from django.template import loader
+from .forms import AddAskForm,AddAnswerForm
+
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -56,4 +58,35 @@ def post_list_popular(request):
 def details(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     answers = question.answer_set.all()
-    return render(request, 'qa/details.html', {'question': question,'answers':answers})
+    form = AddAnswerForm()
+    return render(request, 'qa/details.html', {'question': question,
+                                               'answers':answers,
+                                               'question_id':question_id,
+                                               'form':form})
+
+def question_add(request):
+    if request.method == "POST":
+        form = AddAskForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            url = question.get_url()
+            print(url)
+            return HttpResponseRedirect(url)
+    else:
+        form = AddAskForm()
+    return render(request, 'qa/question_add.html', {
+        'form': form,
+
+    })
+
+def answer_add(request):
+    if request.method == "POST":
+        form = AddAnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save()
+            url = str(answer.question.id)
+            url='/question/'+url+'/'
+            print(url)
+            return HttpResponseRedirect(url)
+
+    return Http404

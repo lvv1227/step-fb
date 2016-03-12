@@ -1,0 +1,6 @@
+{% url 'qa:ask_question' %}
+2) User- это user стандартная модель, лежит она вот тут: from django.contrib.auth.models import User. Я запустил консоль: ./manage.py shell -> там создал 
+user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword').save().
+
+
+<input id="id_title" maxlength="100" name="title" type="text">
