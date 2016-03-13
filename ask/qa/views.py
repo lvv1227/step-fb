@@ -3,9 +3,10 @@ from django.http import HttpResponse,HttpRequest,Http404
 from django.http import HttpResponseRedirect
 
 from .models import Question
-from .forms import AskForm,AnswerForm
+from .forms import AskForm,AnswerForm,SignupForm,SigninForm
 
 from django.core.paginator import Paginator
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def test(request, *args, **kwargs):
@@ -27,6 +28,7 @@ def post_list(request):
 
 
 def post_list_all(request):
+    print(request.user)
     questions = Question.objects.order_by('-id')
     limit = 10
     page = request.GET.get('page', 1)
@@ -67,6 +69,7 @@ def details(request, question_id):
 def question_add(request):
     if request.method == "POST":
         form = AskForm(request.POST)
+        form._user=request.user
         if form.is_valid():
             question = form.save()
             url = question.get_url()
@@ -82,6 +85,7 @@ def question_add(request):
 def answer_add(request):
     if request.method == "POST":
         form = AnswerForm(request.POST)
+        form._user=request.user
         if form.is_valid():
             answer = form.save()
             url = str(answer.question.id)
@@ -90,3 +94,41 @@ def answer_add(request):
             return HttpResponseRedirect(url)
 
     return Http404
+
+def signup(request):
+    if request.method=="POST":
+        form=SignupForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            user = authenticate(username=form.get_username(), password=form.get_password())
+            login(request,user)
+            return HttpResponseRedirect('/')
+        else:
+            return Http404
+
+    else: #GET, show the form
+        form=SignupForm()
+        return render(request, 'qa/signup.html', {
+        'form': form,
+
+        })
+
+def signin(request):
+    if request.method=="POST":
+        form=SigninForm(request.POST)
+        if form.is_valid():
+
+            user = authenticate(username=form.get_username(), password=form.get_password())
+            if user is None:
+                return HttpResponse("Wrong username / password")
+            login(request,user)
+            return HttpResponseRedirect('/')
+        else:
+            return Http404
+
+    else: #GET, show the form
+        form=SigninForm()
+        return render(request, 'qa/signin.html', {
+        'form': form,
+
+        })
